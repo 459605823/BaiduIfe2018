@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .container{
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    height: 200px;
+    border: 1px solid #aaa;
+  }
+  #change{
+    background-color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-top: 50px;
+    outline:none;
+  }
+  #border{
+    width: 0px;
+    border-bottom: 2px solid #0e8bdc;
+    margin-left: 185px;
+    margin-top: -10px;
+    /* 控制线条从中间向两端变化
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto; */
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: width .3s cubic-bezier(0,0.25,0.75,1);
+  }
+  h1{
+    transition: color .3s cubic-bezier(0,0.25,0.75,1);
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+   <h1 id="text">前端学院</h1>
+   <div id="border"></div>
+   <button id="change">切换样式</button>
+  </div>
+  <script>
+    var changeBtn = document.getElementById("change");
+    var border = document.getElementById("border");
+    var text = document.getElementById("text");
+    var isClicked = false;
+    changeBtn.onclick = function(){
+       if(!isClicked){
+          border.style.width = "130px";
+          text.style.color = "#0e8bdc";
+          isClicked = true;
+       }else{
+         border.style.width = "0px";
+         text.style.color = "black";
+         isClicked = false;
+       }
+    }
+  </script>
+</body>
+</html>
