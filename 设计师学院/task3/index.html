@@ -171,16 +171,19 @@
               transform: translateY(-20px);
             }
             .container:hover .face-red{
-              opacity: .7;
+              opacity: .5;
             }
             .container:hover .eye-core{
-              width: 42px;
+             transform:scaleX(.75);
             }
             .container:hover .mouth{
              border-radius: 0% 40% 50% 50%;
             }
-            .container:hover .ear{
-             border-radius: 100% 70% 70% 0% ;
+            .container:hover .ear-mouth .left{
+             transform:rotateZ(-30deg);
+            }
+            .container:hover .ear-mouth .right{
+             transform:rotateZ(30deg);
             }
         </style>
     </head>
