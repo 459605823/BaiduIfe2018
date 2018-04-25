@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+   div{
+     width: 100px;
+     height: 100px;
+     margin: 50px 50px;
+     background-color: #eee;
+     line-height: 100px;
+     text-align: center;
+     display: inline-block;
+   }
+   .box1{
+     -webkit-transform: skewX(30deg);
+     -ms-transform: skewX(30deg);
+     transform: skewX(30deg);
+   }
+   .box2{
+     -webkit-transform: scaleX(0.5);
+     -ms-transform: scaleX(0.5);
+     transform: scaleX(0.5);
+   }
+   .box3{
+     -webkit-transform: rotate(45deg);
+     -ms-transform: rotate(45deg);
+     transform: rotate(45deg);
+   }
+   .box4{
+     -webkit-transform: translate(10px,20px);
+     -ms-transform: translate(10px,20px);
+     transform: translate(10px,20px);
+   }
+   .box5{
+     -webkit-transform:scaleX(0.5) translate(10px,20px) skewX(30deg) rotate(45deg);
+     -ms-transform:scaleX(0.5) translate(10px,20px) skewX(30deg) rotate(45deg);
+     transform:scaleX(0.5) translate(10px,20px) skewX(30deg) rotate(45deg);
+   }
+  </style>
+</head>
+<body>
+  <div class="box0">box0</div>
+  <div class="box1">box1</div>
+  <div class="box2">box2</div>
+  <div class="box3">box3</div>
+  <div class="box4">box4</div>
+  <div class="box5">box5</div>
+</body>
+</html>
