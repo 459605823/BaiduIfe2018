@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .container{
+      margin: 0 auto;
+      width: 250px;
+      height: 350px;
+      position: relative;
+      perspective:500;
+      top: 200px;
+      /*为父元素设置景深，使动画有3d效果 */
+      -webkit-perspective:500;
+    }
+    .container img{
+      position: absolute;
+      -webkit-transition: all .5s ease-in;
+      -o-transition: all .5s ease-in;
+      transition: all .5s ease-in;
+      /*设置背面元素不可见,防止翻转后背面元素被翻转后的正面元素遮挡 */
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+    }
+    /*先让背面元素旋转180度,hover时再旋转180度,此时旋转后背面元素即为正面*/
+  .container .inside{
+    -webkit-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+  .container:hover .inside{
+     -webkit-transform: rotateY(360deg);
+     -ms-transform: rotateY(360deg);
+     transform: rotateY(360deg);
+  }
+  .container:hover .upside{
+     -webkit-transform: rotateY(180deg);
+     -ms-transform: rotateY(180deg);
+     transform: rotateY(180deg);
+  }
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <!-- 用到的新属性:
+   1.perspective:设置景深,设置在父元素上子元素会获得透视效果
+   2.backface-visibility:定义元素不面向屏幕时是否可见 -->
+  <div class="container">
+    <img src="inside.jpg" alt="" class="inside">
+    <img src="upside.jpg" alt="" class="upside">
+  </div>
+</body>
+</html>
