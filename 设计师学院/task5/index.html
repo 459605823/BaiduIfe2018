@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .container{
+      width: 100%;
+      /* perspective写在父元素上 */
+      perspective: 600px;
+      height: 720px;
+    }
+    .cube{
+      margin: 0 auto;
+      position: relative;
+      transform-style: preserve-3d;
+      width: 300px;
+      height: 300px;
+      top: 200px;
+    }
+    .cube:hover{
+      animation: rotation 10s infinite linear;
+    }
+    @keyframes rotation{
+      0%{transform: rotateY(0deg);}
+      100%{transform: rotateY(360deg);}
+    }
+    .side{
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background-color: rgba(25, 47, 118, 0.74);
+      border: 5px solid #2185f5;
+      box-sizing: border-box;
+    }
+    /* 正面 */
+    .side1{
+      -webkit-transform: translateZ(150px);
+      -ms-transform: translateZ(150px);
+      transform: translateZ(150px);
+    }
+    /* 后面 */
+    .side2{
+     -webkit-transform:rotateY(180deg)  translateZ(150px);
+     -ms-transform:rotateY(180deg)  translateZ(150px);
+     transform:rotateY(180deg) translateZ(150px);
+   }
+   /* 右面 */
+    .side3{
+     -webkit-transform: rotateY(90deg) translateZ(150px);
+     -ms-transform: rotateY(90deg) translateZ(150px);
+     transform: rotateY(90deg) translateZ(150px);
+   }
+   /* 左面 */
+   .side4{
+    -webkit-transform: rotateY(-90deg) translateZ(150px);
+    -ms-transform: rotateY(-90deg) translateZ(150px);
+    transform: rotateY(-90deg) translateZ(150px);
+   }
+   /* 上面 */
+   .side5{
+     -webkit-transform: rotateX(90deg) translateZ(150px);
+     -ms-transform: rotateX(90deg) translateZ(150px);
+     transform: rotateX(90deg) translateZ(150px);
+   }
+   /* 下面 */
+   .side6{
+     -webkit-transform: rotateX(-90deg) translateZ(150px);
+     -ms-transform: rotateX(-90deg) translateZ(150px);
+     transform: rotateX(-90deg) translateZ(150px);
+   }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="cube">
+      <div class="side side1"></div>
+      <div class="side side2"></div>
+      <div class="side side3"></div>
+      <div class="side side4"></div>
+      <div class="side side5"></div>
+      <div class="side side6"></div>
+    </div>
+  </div>
+</body>
+</html>
