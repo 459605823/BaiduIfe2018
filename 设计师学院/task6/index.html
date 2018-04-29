@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+  body,html{
+    height: 100%;
+    margin: 0;
+  }
+  .showStage{
+    left: 0;
+    top: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .showStage>img{
+ 	  width: 100%;
+ 	  position: absolute;
+ 	  top: 0;
+    left: 0;
+ 		z-index:1;
+  }
+  .thumbnail-list{
+    z-index: 99;
+    position: absolute;
+    top: 750px;
+    left: 100px;
+  }
+  .thumbnail-list > div{
+    position: relative;
+    display: inline-block;
+    margin-left: 30px;
+  }
+  .thumbnail-list > div > a > img{
+    width: 300px;
+    height: 200px;
+    cursor: pointer;
+  }
+  .imgbg{
+    width: 300px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #000;
+    opacity:0.5;
+    /* 兼容IE浏览器,alpha为rgba的a通道 */
+    filter(alpha=50);
+  }
+ .imgbg:hover{
+    opacity:0;
+    /* 兼容IE浏览器,alpha为rgba的a通道 */
+    filter(alpha=0);
+  }
+ #img1:target{
+    z-index: 3;
+    animation: img1 .5s ease-out;
+  }
+  @keyframes img1 {
+    0%{left: -500px;}
+    100%{left: 0;}
+  }
+ #img2:target{
+    z-index: 3;
+    animation: img2 .5s ease-out;
+  }
+  @keyframes img2 {
+    0%{top: 350px}
+    100%{top: 0;}
+  }
+ #img3:target{
+    z-index: 3;
+    animation: img3 1s ease-in;
+  }
+  @keyframes img3 {
+    0%{transform: scale(.1,.1);}
+    100%{transform: scale(1,1);}
+  }
+ #img4:target{
+    z-index: 3;
+    animation: img4 1s ease-out;
+  }
+  @keyframes img4 {
+    0%{transform: scale(2,2);}
+    100%{transform: scale(1,1);}
+  }
+ #img5:target{
+    z-index: 3;
+    animation: img5 .7s ease-in-out;
+  }
+  @keyframes img5 {
+    0%{transform: scale(.1,.1) rotate(-360deg);}
+    100%{transform: scale(1,1) rotate(0deg);}
+  }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+    <div class="showStage">
+      <img src="1.jpg" alt="" id="img1">
+      <img src="2.jpg" alt="" id="img2">
+      <img src="3.jpg" alt="" id="img3">
+      <img src="4.jpg" alt="" id="img4">
+      <img src="5.png" alt="" id="img5">
+    </div>
+    <div class="thumbnail-list">
+      <div>
+       <a href="#img1"  id="thumbnail1">
+        <img src="1.jpg" alt="">
+        <div class="imgbg"></div>
+       </a>
+     </div>
+      <div>
+        <a href="#img2"  id="thumbnail2">
+          <img src="2.jpg" alt="">
+          <div class="imgbg"></div>
+        </a>
+      </div>
+      <div>
+        <a href="#img3"  id="thumbnail3">
+          <img src="3.jpg" alt="">
+          <div class="imgbg"></div>
+        </a>
+      </div>
+      <div>
+        <a href="#img4"  id="thumbnail4">
+          <img src="4.jpg" alt="">
+          <div class="imgbg"></div>
+        </a>
+      </div>
+      <div>
+        <a href="#img5"  id="thumbnail5">
+          <img src="5.png" alt="">
+          <div class="imgbg"></div>
+        </a>
+      </div>
+    </div>
+</body>
+</html>
