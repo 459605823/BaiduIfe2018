@@ -12,9 +12,11 @@ var productCheckboxWrapper = document.getElementById("product-checkbox-wrapper")
 
 window.onload = function(){
   var checkboxs = document.querySelectorAll("input[type=checkbox]");
+  //初始默认将表单全选
   for(let i=0,len=checkboxs.length;i<len;i++){
     checkboxs[i].checked = true;
   }
+  //显示所有数据
   var regionArr = selectedValue(regionCheckboxWrapper);
   var productArr = selectedValue(productCheckboxWrapper);
   tableWrapper.innerHTML=renderNewTable(regionArr,productArr,getData(regionArr,productArr));
