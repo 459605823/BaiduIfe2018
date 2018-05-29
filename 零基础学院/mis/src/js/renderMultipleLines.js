@@ -18,7 +18,7 @@ function renderMultipleLines(){
   var maxData = sumData.max();
   var rate = 400 / maxData;
   var lines = new Line();
-  console.log(data);
+  //console.log(data);
   //遍历当前表单选中的数据,绘出多条折线
   for(let j=0,len=data.length;j<len;j++){
     lines.renderMany(data[j].sale,strokeColors[j],rate);
