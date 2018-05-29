@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  #table-wrapper{
+    margin-top: 30px;
+    width: 1000px;
+    height: 600px;
+  }
+  #table-wrapper td{
+    padding: 10px;
+  }
+  </style>
+</head>
+<body>
+  <form>
+    <div id="region-checkbox-wrapper">
+      <input type="checkbox" name="region" value="华东" id="east">
+      <label for="east">华东</label>
+      <input type="checkbox" name="region" value="华北" id="north">
+      <label for="north">华北</label>
+      <input type="checkbox" name="region" value="华南" id="south">
+      <label for="south">华南</label>
+      <input type="checkbox" id="selectAll">
+      <label for="selectAll">全选</label>
+    </div>
+    <div id="product-checkbox-wrapper">
+      <input type="checkbox" name="product" value="手机" id="phone">
+      <label for="phone">手机</label>
+      <input type="checkbox" name="product" value="笔记本" id="laptop">
+      <label for="laptop">笔记本</label>
+      <input type="checkbox" name="product" value="智能音箱" id="box">
+      <label for="box">智能音箱</label>
+      <input type="checkbox" id="selectAll">
+      <label for="selectAll">全选</label>
+    </div>
+  </form>
+  <svg id="svg-wrapper" style="width:600px;height:400px"
+  version="1.1" xmlns="http://www.w3.org/2000/svg">
+  </svg>
+  <canvas id="canvas" style="float: right;margin-right:500px"></canvas>
+  <div id="table-wrapper">
+  </div>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>
