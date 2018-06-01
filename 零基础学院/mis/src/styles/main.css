@@ -1,0 +1,28 @@
+#table-wrapper{
+  margin-top: 30px;
+  width: 1000px;
+  height: 600px;
+}
+#table-wrapper td{
+  padding: 10px;
+}
+#saveData{
+  position: absolute;
+  left: 1100px;
+  top: 500px;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 3px;
+}
+#saveData:hover{
+  background-color: red;
+  color: #fff;
+}
+.edit:hover {
+background:	url('../imgs/pencil.png') no-repeat;
+background-position:		100% 0%;
+background-size:			20px;
+}
+.editInput{
+  width: 40px;
+}
