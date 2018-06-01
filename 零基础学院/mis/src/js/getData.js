@@ -1,4 +1,5 @@
 export {selectedValue,getData};
+import {fetch,save} from "./localStorage.js";
 import {sourceData} from "./ife31data.js";
 
 function selectedValue(wrapper){
@@ -13,21 +14,24 @@ function selectedValue(wrapper){
   }
 
 function getData(regionArr,productArr){
+ let localData = fetch();
  let data = [];
  for(let i=0,len=sourceData.length;i<len;i++){
-   if(regionArr.length==0){
-          if(productArr.indexOf(sourceData[i].product)!=-1){
-            data.push(sourceData[i]);
-          }
-        }else if(productArr.length==0){
-          if(regionArr.indexOf(sourceData[i].region)!=-1){
-            data.push(sourceData[i]);
-          }
-        }else{
-          if(regionArr.indexOf(sourceData[i].region)!=-1&&productArr.indexOf(sourceData[i].product)!=-1){
-            data.push(sourceData[i]);
-        }
-      }
+   //当localStorage中存有数据时使用localStorage中的数据
+   if(localData != null) {
+ 			if(regionArr.indexOf(localData[i]['region'])!=-1&&productArr.indexOf(localData[i]['product'])!= -1&&localData[i]['sale'][0]!= null) {
+ 				data.push(localData[i]);
+ 			}else if(regionArr.indexOf(sourceData[i]['region'])!=-1&&productArr.indexOf(sourceData[i]['product'])!= -1&&localData[i]['sale'][0]== null) {
+ 				data.push(sourceData[i]);
+ 			}
+ 		}
+    //否则使用原始数据
+    else {
+ 			if(regionArr.indexOf(sourceData[i]['region'])!=-1&&productArr.indexOf(sourceData[i]['product'])!= -1) {
+ 				data.push(sourceData[i]);
+ 			}
+ 		}
 }
 return data;
 }
+
