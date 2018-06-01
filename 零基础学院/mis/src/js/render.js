@@ -33,7 +33,8 @@ function renderNewTable(arr1,arr2,data) {
         `
     var rowspanOff=false;
     for(var i=0;i<data.length;i++){
-        temp+=`<tr>`
+      //为数据行设定保存当前行信息的属性
+        temp+=`<tr info="${data[i].product},${data[i].region}">`
         if(arr2.length<arr1.length&&arr2.length==1){
             if(!rowspanOff){
                 temp+=`<td rowspan="${arr1.length}">${data[i].product}</td>`
@@ -60,9 +61,8 @@ function renderNewTable(arr1,arr2,data) {
             temp+=`<td>${data[i].region}</td>`
         }
         for(var j=0;j<data[i].sale.length;j++){
-            temp+=`<td>${data[i].sale[j]}</td>`
+            temp+=`<td class="edit">${data[i].sale[j]}</td>`
         }
-
         temp+=`</tr>`
     }
     temp+=`</table>`;
