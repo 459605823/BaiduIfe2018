@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  #contABC,#contDEF{
+    width: 60px;
+    height: 60px;
+    background: #aaa;
+    color: red;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  </style>
+</head>
+<body>
+  <button id="a">A</button>
+  <button id="b">B</button>
+  <button id="c">C</button>
+
+  <button id="d">D</button>
+  <button id="e">E</button>
+  <button id="f">F</button>
+
+
+  <div id="contABC"></div>
+  <div id="contDEF"></div>
+  <script>
+  window.onload = function(){
+    render();
+    prepareBtns();
+  }
+    function getHash(){
+      var query = window.location.href.split("?")[1];
+      return query;
+    }
+    function render(){
+      var query = getHash();
+      var divABC = document.getElementById("contABC");
+      var divDEF = document.getElementById("contDEF");
+      switch(query){
+        case 'A':
+          divABC.innerHTML = query;
+          divDEF.innerHTML = "";
+          break;
+        case 'B':
+          divABC.innerHTML = query;
+          divDEF.innerHTML = "";
+          break;
+        case 'C':
+          divABC.innerHTML = query;
+          divDEF.innerHTML = "";
+          break;
+        case 'D':
+          divDEF.innerHTML = query;
+          divABC.innerHTML = "";
+          break;
+        case 'E':
+          divDEF.innerHTML = query;
+          divABC.innerHTML = "";
+          break;
+        case 'F':
+          divDEF.innerHTML = query;
+          divABC.innerHTML = "";
+          break;
+      }
+    }
+    function prepareBtns(){
+      var btns = document.getElementsByTagName("button");
+      for(let i=0,len=btns.length;i<len;i++){
+        btns[i].onclick = function(){
+          var query = this.innerHTML;
+         history.pushState({},null,location.href.split("?")[0]+"?"+query);
+         render();
+        }
+      }
+    }
+  window.addEventListener("popstate", render, false);
+
+  </script>
+</body>
+</html>
