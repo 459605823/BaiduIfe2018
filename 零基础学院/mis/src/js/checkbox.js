@@ -46,9 +46,12 @@ function generateCheckbox(wrapper){
             }
        }
      }
-    //表单项点击后,要根据此时的选项重新绘制表格和折线图,并为重新绘制的表格绑定mouseover事件
      var regionArr = selectedValue(regionCheckboxWrapper);
      var productArr = selectedValue(productCheckboxWrapper);
+     //将由当前选择的信息组成的url添加到历史记录里
+     var query = "" + regionArr + "-" + productArr;
+     history.pushState({},null,location.href.split("?")[0]+"?"+query);
+     //表单项点击后,要根据此时的选项重新绘制表格和折线图,并为重新绘制的表格绑定mouseover事件
      tableWrapper.innerHTML=renderNewTable(regionArr,productArr,getData(regionArr,productArr));
      renderMultipleLines();
      tableEvent(tableWrapper);
