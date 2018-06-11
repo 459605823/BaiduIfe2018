@@ -14,7 +14,8 @@ Restaurant.prototype = {
   }
 }
 
-var restaurant = new Restaurant(10,1,[]);
+var restaurant = new Restaurant(1000,1,[]);
+document.getElementById('cash').innerHTML = restaurant.cash;
 
 var getSingle = function(fn){
   var result;
@@ -35,14 +36,17 @@ function Employee(id,name,wage){
 function Waiter(id,name,wage){
   var instance = null;
   Employee.call(this,id,name,wage);
-  this.doAWork = function(customer,food){
-     console.log("请问您要吃些什么?");
-     var orderFood = customer.order(food);
-     console.log("您点的菜为"+orderFood.name);
-     return orderFood;
+  this.ask = function(){
+    console.log("请问您要吃些什么?");
+  }
+  this.doAWork = function(orderfood){
+     console.log("您点的菜为:");
+     for(let i=0;i<orderFood.length;i++){
+        console.log(orderFood[i].name);
+      }
    }
-  this.pickUp = function(){
-    console.log("这是您的菜,请慢用。");
+  this.pickUp = function(orderFood){
+    console.log("这是您的"+orderFood.name+",请慢用。");
   }
   instance = this;
   Waiter = function(){
@@ -57,11 +61,12 @@ var waiter = new Waiter(1,"Max",2000);
 function Cook(id,name,wage){
  var instance = null;
  Employee.call(this,id,name,wage);
- this.doAWork = function(orderFood){
-    console.log("开始做"+orderFood.name);
-    console.log(orderFood.name+"做好了");
-    waiter.pickUp();
-  }
+ this.startCook = function(food){
+     console.log("开始做"+food.name);
+ }
+ this.cookDone = function(food){
+   console.log(food.name+"做好了");
+ }
   instance = this;
   Cook = function(){
     return instance;
@@ -73,13 +78,26 @@ Cook.prototype = new Employee();
 var cook = new Cook(2,"Oleg",2500);
 
 function Customer(){
-  Customer.prototype.order = function(food){
-    console.log(food.name);
-    return food;
+  Customer.prototype.order = function(){
+    var fNumber = Math.ceil(Math.random()*5);
+    var orderFood = [];
+    for(let i=0;i<fNumber;i++){
+      let j = Math.floor(Math.random()*5);
+      let chooseFood = foodList[j];
+      if(orderFood.indexOf(chooseFood) === -1){
+        orderFood.push(chooseFood);
+      }else{
+        continue;
+      }
+    }
+    for(let k=0;k<orderFood.length;k++){
+      console.log(orderFood[k].name);
+    }
+    return orderFood;
   }
   Customer.prototype.eat = function(food){
-    console.log("吃"+food.name);
-  }
+        console.log("吃"+food.name);
+   }
 }
 
 var customerList = (function(){
@@ -91,26 +109,48 @@ var customerList = (function(){
   return cList;
 })();
 
-function Food(name,price){
+function Food(name,price,time){
   this.name = name;
   this.price = price;
+  this.time = time;
 }
 
 var foodList = (function(){
   var fList = [];
   var nameList = ['西红柿炒鸡蛋','宫保鸡丁','回锅肉','糖醋里脊','红烧肉'];
   var priceList = [8,15,23,20,28];
+  var timeList = [5,8,9,9,10];
   for(let i=0;i<5;i++){
-    var f = new Food(nameList[i],priceList[i]);
+    var f = new Food(nameList[i],priceList[i],timeList[i]);
     fList.push(f);
   }
   return fList;
 })()
+
 restaurant.hire(waiter);
 restaurant.hire(cook);
 console.log(restaurant.staff);
-for(var i=0,len=customerList.length;i<len;i++){
-  let orderFood = waiter.doAWork(customerList[i],foodList[i]);
-  cook.doAWork(orderFood);
-  customerList[i].eat(orderFood);
+// for(var i=0;i<customerList.length;i++){
+//   waiter.ask();
+//   var orderFood = customerList[i].order();
+//   waiter.doAWork(orderFood);
+//   for(var j=0;j<orderFood.length;j++){
+//     cook.startCook(orderFood[j]);
+//     cook.cookDone(orderFood[j]);
+//     waiter.pickUp(orderFood[j]);
+//     customerList[i].eat(orderFood[j]);
+//   }
+// }
+function getOrderFood(customer){
+  return new Promise(function(resolve,reject){
+    setTimeout(function(){
+      var orderFood = customer.order();
+      resolve(orderFood);
+    },3000);
+  })
+}
+function cookFood(orderFood){
+  return new Promise(function(resolve,reject){
+
+  })
 }
