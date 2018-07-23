@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  #container{
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    margin: 0 auto;
+    width: 1500px;
+    height: 600px;
+  }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="renderPitch.js"></script>
+  <script src="player.js"></script>
+  <script>
+    window.onload = function(){
+      var pitch = new Pitch();
+      pitch.render();
+      var player = new Player();
+      player.render();
+    }
+  </script>
+</body>
+</html>
