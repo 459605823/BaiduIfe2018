@@ -1,0 +1,613 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h1,h2,h3,p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.tools-bar {
+  width: 6%;
+  position: relative;
+  background: #1d2531;
+}
+
+.tools-bar .icon {
+  display: block;
+  margin-top: 24px;
+  position: relative;
+  text-align: center;
+}
+/* 图标hover时的点状提示图标 */
+.dot::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: #2ca0f7;
+  border-radius: 50%;
+  margin: -2px 0 0 -2px;
+  opacity: 0;
+}
+
+.dot.active::before,
+.dot:hover::before {
+  opacity: 1;
+}
+/* 加号外部的圆环 */
+.add {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  color: #2d3848;
+  border: 3px solid;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+/* 加号的横线 */
+.add::before {
+  content: "";
+  width: 20px;
+  border-top: 6px solid;
+  position: absolute;
+  top: 45%;
+  left: 33%;
+}
+/* 加号的竖线 */
+.add::after {
+  content: "";
+  height: 20px;
+  border-left: 6px solid;
+  position: absolute;
+  top: 33%;
+  left: 45%;
+}
+
+.setting {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  color: #475364;
+  text-align: center;
+}
+
+.setting i {
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.navbar {
+  width: 14%;
+  background: #222b3c;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.navbar ul {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.navbar ul .title {
+  color: #475364;
+}
+
+.navbar ul .title img {
+  float: right;
+}
+
+.navbar ul .dot::before {
+  left: -30px;
+}
+
+.navbar ul li {
+  margin-bottom: 20px;
+  position: relative;
+}
+/* 消息条数图标 */
+.badge {
+  font-size: 12px;
+  color: #fff;
+  padding: 3px 8px;
+  background: linear-gradient(to bottom right, #2b9ff7, #1f95ff);
+  border-radius: 20px;
+  float: right;
+}
+
+.navbar ul li a {
+  color: #b7c0cd;
+}
+
+.navbar ul li a:hover {
+  color: #f9f9f9;
+}
+
+.current-li {
+  color: #f9f9f9 !important;
+}
+
+.navbar ul li img {
+  margin-right: 20px;
+  height: 12px;
+  width: 16px;
+}
+
+.navbar hr {
+  border-color: #475364;
+  margin: 26px 0;
+}
+
+.navbar .goal {
+  width: 12%;
+  position: absolute;
+  bottom: 0;
+  left: 7%;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 30px;
+}
+
+.navbar .goal h3 {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.navbar .goal h3 span {
+  font-weight: 100;
+}
+
+.navbar .goal progress {
+  height: 6px;
+  border: 1px solid #222b3c;
+  width: 85%;
+  border-radius: 5px;
+}
+
+.content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.content header {
+  height: 5rem;
+  border-bottom: 1px solid #e6e9ec;
+}
+
+.content header h3 {
+  display: inline-block;
+  font-size: 24px;
+  line-height: 80px;
+  font-weight: normal;
+  margin: 0 0 0 30px;
+}
+
+.userinfo {
+  margin-top: 16px;
+  float: right;
+  width: 200px;
+}
+
+.userinfo .user-avatar {
+  float: left;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+/* 用户头像图标白色圆形背景 */
+.userinfo .user-avatar::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  bottom: 5px;
+  right: 1px;
+}
+/* 用户头像图标绿色圆环 */
+.userinfo .user-avatar::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3px solid #38a76a;
+  background: #fff;
+  bottom: 8px;
+  right: 3px;
+  box-sizing: border-box;
+}
+
+.userinfo .user-id {
+  display: inline-block;
+  padding: 6px 0 0 15px;
+}
+
+.userinfo .user-id strong {
+  color: #2399f1;
+}
+
+.userinfo .user-id p {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #999;
+}
+/* 下箭头 */
+.arrow-down {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-width: 2px 2px 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  transform: rotate(135deg);
+  margin-bottom: 15px;
+  margin-left: 20px;
+}
+
+aside {
+  width: 30%;
+  height: calc(100% - 5rem - 1px);
+  border-right: 1px solid #e6e9ec;
+  float: left;
+}
+
+.overflow-hide {
+  overflow: scroll;
+}
+
+.overflow-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.search {
+  height: 70px;
+  line-height: 70px;
+  border-bottom: 1px solid #e6e9ec;
+  text-align: center;
+  position: relative;
+}
+
+.search input {
+  width: 80%;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid #e5e8ee;
+  padding-left: 2.5%;
+}
+
+.search img {
+  position: absolute;
+  right: 12%;
+  top: 40%;
+  width: 1rem;
+  height: 1rem;
+}
+
+.list-item {
+  border-left: 2px solid transparent;
+  padding: 5%;
+  border-bottom: 1px solid #e5e8ee;
+}
+
+.list-item:hover {
+  border-left: 2px solid #2399f1;
+}
+
+.cur-item {
+  border-left: 2px solid #2399f1;
+}
+
+.cur-item .item-title .item-info h3 {
+  color: #2399f1;
+}
+
+.item-title {
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5%;
+}
+
+.item-avatar {
+  width: 46px;
+  height: 46px;
+}
+
+.item-info {
+  width: 65%;
+}
+
+.item-info .item-name {
+  position: relative;
+  font-size: 16px;
+  color: #585d68;
+}
+
+.item-info .dot::before {
+  left: -5px;
+}
+
+.item-company {
+  font-size: 14px;
+  color: #b5b5b5;
+}
+
+.item-time {
+  font-size: 14px;
+  color: #7f8fa4;
+}
+
+.item-body {
+  font-size: 14px;
+  color: #585d68;
+  position: relative;
+}
+
+.item-body .badge {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+}
+
+.dialogue {
+  height: calc(100% - 5rem - 1px);
+  margin-left: 30%;
+}
+
+.dialogue-top {
+  padding: 0 3%;
+  height: 70px;
+  line-height: 70px;
+  border-bottom: 1px solid #e6e9ec;
+}
+
+.dialogue-title {
+  font-size: 1.2rem;
+  color: #585d68;
+}
+
+.dialogue-title::after {
+  content: '';
+  display: inline-block;
+  width: .5em;
+  height: .5em;
+  border-radius: 50%;
+  background: #1bb834;
+  margin-left: .5em;
+}
+
+.controlers {
+  float: right;
+}
+/* font-size为0时去除内联元素间的空白区域，使按钮连在一起 */
+.functionButton {
+  float: left;
+  font-size: 0;
+}
+
+.vertical-line {
+  float: left;
+  margin: -2px 1rem 0 1rem;
+  font-size: 28px;
+  opacity: .3;
+}
+
+.pageButton {
+  float: left;
+  font-size: 0;
+}
+
+.myBtn {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  background-image: linear-gradient(0deg, #f1f3f7 0%, #ffffff 100%), linear-gradient(#ffffff, #ffffff);
+  border: 1px solid #ced0da;
+  vertical-align: middle;
+}
+
+.myBtn img {
+  width: 1rem;
+  height: 1rem;
+  vertical-align: -3px;
+}
+/* 第一个按钮左上角和左下角为圆角 */
+.btn-first {
+  border-radius: 4px 0 0 4px;
+}
+/* 最后一个按钮右上角和右下角为圆角 */
+.btn-last {
+  border-radius: 0 4px 4px 0;
+}
+
+.page-number {
+  font-size: 14px;
+  color: #56688a;
+  margin-right: .5rem;
+  vertical-align: -3px;
+}
+
+.dialogue-main {
+  padding-bottom: calc(5% + 48px);
+}
+
+.clearfix {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+.dialogue-item {
+  padding: 3% 3% 0 3%;
+}
+
+.dialogue-item .dialogue-avatar {
+  float: left;
+  max-width: 8%;
+}
+
+.dialogue-item .dialogue-text {
+  float: right;
+  width: 92%;
+}
+
+.dialogue-name {
+  font-size: 16px;
+  color: #585d68;
+}
+
+.dialogue-time {
+  font-size: 14px;
+  color: #7f8fa4;
+  margin-left: 1rem;
+}
+
+.dialogue-textContent {
+  font-size: 14px;
+  margin-top: 2%;
+  color: #585d68;
+}
+
+.hrLine {
+  position: relative;
+  text-align: center;
+  margin: 1.5% 0;
+  height: 0;
+}
+
+.grey {
+  color: #7F8FA4;
+}
+
+.grey::before {
+  background: rgba(159, 169, 186, 0.4);
+}
+
+.blue {
+  color: #2399f1;
+}
+
+.blue::before {
+  background: rgba(35, 153, 241, 0.4);
+}
+
+.hrLine::before {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 1px;
+  top: 12px;
+}
+
+.hrLine span {
+  position: relative;
+  padding: 0 10px;
+  z-index: 1;
+  background: #fff;
+}
+
+.dialogue-imgGroup {
+  width: 100%;
+  margin-top: 2%;
+}
+
+.dialogue-imgGroup .img-item {
+  float: left;
+  width: 25%;
+  margin-right: 3%;
+  position: relative;
+  cursor: pointer;
+}
+
+.img-item:hover .mask {
+  display: block;
+}
+
+.dialogue-img {
+  width: 100%;
+  border-radius: 4px;
+  vertical-align: bottom;
+}
+
+.img-item .mask {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: black;
+  opacity: .7;
+  border-radius: 4px;
+  text-align: center;
+  display: none;
+}
+
+.mask img {
+  width: 25%;
+  margin-top: 20%;
+  vertical-align: middle;
+}
+
+.dialogue-bottom {
+  position: absolute;
+  bottom: 0;
+  width: calc(70% - 1px - 4%);
+  padding: 1% 2%;
+  background: #fff;
+  z-index: 2;
+}
+
+.bottom-btn {
+  width: 58px;
+  height: 48px;
+  float: left;
+}
+
+.sendMessage {
+  float: right;
+  width: calc(100% - 58px);
+}
+
+.sendMessageInput {
+  width: calc(100% - 25px);
+  height: 34px;
+  line-height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #585d68;
+  border-radius: 0 4px 4px 0;
+  border: 1px solid #ced0da;
+  border-left: none;
+}
